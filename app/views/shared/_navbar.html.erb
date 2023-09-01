@@ -1,0 +1,22 @@
+<nav class="text-slate-900 dark:text-white flex justify-between items-center pt-6 pb-6 pr-12 pl-12">
+  <div>LOGO</div>
+
+  <!-- Barre de navigation quand l'utilisateur est connecté -->
+  <% if user_signed_in? %>
+    <div><!-- Ajouter la barre de recherche ici --></div>
+
+    <div class="flex items-center">
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="#">Mon Tableau de bord</a>
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="#">Mes Bibliothèques</a>
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="#">Mon Profil</a>
+      <span class="pt-1"><%= render "shared/darkmode_toggle"%></span>
+    </div>
+  <% else %>
+  <!-- Barre de navigation quand l'utilisateur n'est pas connecté -->
+  <div class="flex items-center">
+    <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="/users/sign_up" role="button">S'Enregistrer</a>
+    <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="/users/sign_in" role="button">Se Connecter</a>
+    <span class="pt-1"><%= render "shared/darkmode_toggle"%></span>
+  </div>
+  <% end %>
+</nav>

@@ -30,6 +30,9 @@ gem "jbuilder"
 # Authentication
 gem "devise"
 
+# Fontawesome
+gem "font-awesome-sass", "~> 6.4.2"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
