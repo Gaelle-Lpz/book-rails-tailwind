@@ -1,0 +1,25 @@
+<% if @search_books_author %>
+  <% @search_books_author.each do |book| %>
+    <ul>
+      <li>
+        <%= link_to book_path(book) do %>
+          <%= book.title %>
+          <img src="<%= book.cover_img_url %>">
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @search_books_title %>
+  <% @search_books_title.each do |book| %>
+    <ul>
+      <li>
+        <%= link_to book_path(book) do %>
+          <%= book.title %>
+          <img src="<%= book.cover_img_url %>">
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

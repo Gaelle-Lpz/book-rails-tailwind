@@ -100,6 +100,11 @@ GEM
       sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    googlebooks (0.0.9)
+      httparty
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -126,6 +131,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.19.0)
     msgpack (1.7.2)
+    multi_xml (0.6.0)
     net-imap (0.3.7)
       date
       net-protocol
@@ -138,6 +144,7 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
+    openlibrary-covers (0.1.1)
     orm_adapter (0.5.0)
     pg (1.5.3)
     psych (5.1.0)
@@ -242,8 +249,10 @@ DEPENDENCIES
   debug
   devise
   font-awesome-sass (~> 6.4.2)
+  googlebooks
   importmap-rails
   jbuilder
+  openlibrary-covers
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.5)

@@ -33,6 +33,10 @@ gem "devise"
 # Fontawesome
 gem "font-awesome-sass", "~> 6.4.2"
 
+# API
+gem "googlebooks"
+gem 'openlibrary-covers'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
