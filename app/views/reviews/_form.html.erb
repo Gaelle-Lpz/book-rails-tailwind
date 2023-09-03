@@ -1,0 +1,16 @@
+
+<%= form_with(model: [ @book, Review.new ], url: book_reviews_path(@book)) do |form| %>
+  <div class="field">
+    <%= form.label :rating, 'Note' %>
+    <%= form.select :rating, (1..5).to_a %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, 'Commentaire' %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Ajouter une critique' %>
+  </div>
+<% end %>

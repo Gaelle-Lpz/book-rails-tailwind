@@ -4,5 +4,5 @@ class Review < ApplicationRecord
 
   # validation
   validates :rating, presence: true
-  validates :comment, presence: true, length: { minimum: 10 }
+  validates :content, presence: true, length: { minimum: 10 }
 end

@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show]
 
   def show
+    @reviews = @book.reviews
   end
 
   def library

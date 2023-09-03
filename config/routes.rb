@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
 
   resources :books, only: %i[show] do
+    resources :reviews, only: %i[new create]
     collection do
       get :search
       get :library
