@@ -4,4 +4,6 @@ class Book < ApplicationRecord
   has_many :reviews
 
   # enum :status, { wished: 0, pending: 1, read: 2, archive: 3 }
+
+  validates :isbn, uniqueness: true
 end

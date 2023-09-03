@@ -34,7 +34,7 @@ class BooksController < ApplicationController
 
   def search_with_title
     @search_books_title = []
-    GoogleBooks.search("intitle:#{params[:query]}", count: 30).each do |book|
+    GoogleBooks.search("intitle:#{params[:query]}", count: 10, country: "fr").each do |book|
       next unless valid_book?(book)
 
       add_book_in_db(book)
@@ -45,13 +45,13 @@ class BooksController < ApplicationController
 
   def search_with_author
     @search_books_author = []
-    GoogleBooks.search("inauthor:#{params[:query]}", count: 30).each do |book|
+    GoogleBooks.search("inauthor:#{params[:query]}", count: 10, country: "fr").each do |book|
       next unless valid_book?(book)
 
       add_book_in_db(book)
     end
 
-    @search_books_author = Book.where('LOWER(title) LIKE ?', "%#{params[:query].downcase}%")
+    @search_books_author = Book.where('LOWER(author) LIKE ?', "%#{params[:query].downcase}%")
   end
 
   def valid_book?(book)
@@ -78,7 +78,7 @@ class BooksController < ApplicationController
 
   def build_book_from_google_book(book, img_url = nil)
     Book.new(
-      title: book.title,
+      title: book.title.truncate(100),
       description: book.description,
       author: book.authors,
       cover_img_url: img_url || book.image_link,

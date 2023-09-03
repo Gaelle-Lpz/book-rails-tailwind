@@ -1,25 +1,37 @@
-<% if @search_books_author %>
-  <% @search_books_author.each do |book| %>
-    <ul>
-      <li>
-        <%= link_to book_path(book) do %>
-          <%= book.title %>
-          <img src="<%= book.cover_img_url %>">
-        <% end %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
+<div class="container mx-auto mt-8">
+  <h1 class="mb-8 text-lg">Ajouter un livre à votre bibliothèque :</h1>
 
-<% if @search_books_title %>
-  <% @search_books_title.each do |book| %>
-    <ul>
-      <li>
-        <%= link_to book_path(book) do %>
-          <%= book.title %>
-          <img src="<%= book.cover_img_url %>">
-        <% end %>
-      </li>
-    </ul>
+<!-- La recherche ne retourne aucun résultat  :-->
+  <% if @search_books_author.length == 0 && @search_books_title.length == 0%>
+    <p class="mx-auto text-center">Aucun livre ne correspond à votre recherche ...</p>
   <% end %>
-<% end %>
+
+<!-- Affichage des résultats :-->
+  <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 justify-center text-center">
+    <% if @search_books_author %>
+      <% @search_books_author.each do |book| %>
+          <div>
+            <%= link_to book_path(book) do %>
+              <img src="<%= book.cover_img_url %>", class="mx-auto w-64 h-80 hover:animate-pulse rounded-r-lg dark:border-slate-200 border">
+              <%= book.title %>
+            <% end %>
+          </div>
+      <% end %>
+    <% end %>
+
+    <% if @search_books_title %>
+      <% @search_books_title.each do |book| %>
+        <ul>
+          <li>
+            <%= link_to book_path(book) do %>
+              <img src="<%= book.cover_img_url %>", class="mx-auto w-64 h-80 hover:animate-pulse rounded-r-lg dark:border-slate-200 border">
+              <%= book.title %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+
+</div>
