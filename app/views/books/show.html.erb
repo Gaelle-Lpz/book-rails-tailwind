@@ -1,0 +1,23 @@
+<div class="container mx-auto mt-8 mb-20">
+
+<div class="flex">
+    <div class="basis-1/2">
+      <img src="<%= @book.cover_img_url %>" class="mx-auto w-6/12 rounded-r-lg dark:border-slate-200 border">
+    </div>
+
+    <div class="basis-1/2">
+      <h1 class="text-xl text-sky-400 font-semibold"><%= @book.title %></h1>
+      <h2 class="font-semibold">De : <%= @book.author %></h2>
+      <div class="border-2 border-sky-400 p-12 mt-6 bg-slate-100 dark:bg-slate-800 dark:border-sky-500 rounded">
+        <p class="text-right font-semibold text-sm mb-8"><%= @book.score %> pts</p>
+        <p class="text-slate-800 dark:text-slate-200 text-justify"><%= @book.description %></p>
+      </div>
+      <div class="m-9 flex justify-between">
+        <!-- Placeholder des boutons a remplacer par les liens -->
+        <a class="bg-sky-400 px-4 py-2 min-w-[125px] rounded hover:cursor-pointer hover:bg-sky-300" href="/dashboard">Ajouter à ma liste de souhait</a>
+        <a class="bg-sky-400 px-4 py-2 min-w-[125px] rounded hover:cursor-pointer hover:bg-sky-300" href="#">Ajouter à ma liste de lecture</a>
+      </div>
+    </div>
+</div>
+
+</div>
