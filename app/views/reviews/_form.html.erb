@@ -1,16 +1,22 @@
+<div class="mt-12 border-t p-6 border-sky-500 bg-slate-50 dark:bg-slate-700">
+  <%= form_with(model: [ @book, Review.new ], url: book_reviews_path(@book)) do |form| %>
+    <div class="field mt-2">
+    <%= form.label :rating, 'Note', class:"hidden" %>
+      <!-- TODO changer les radio button par des étoiles -->
+      <div>
+        <% (1..5).each do |rating| %>
+          <%= form.radio_button :rating, rating %>
+        <% end %>
+      </div>
+    </div>
 
-<%= form_with(model: [ @book, Review.new ], url: book_reviews_path(@book)) do |form| %>
-  <div class="field">
-    <%= form.label :rating, 'Note' %>
-    <%= form.select :rating, (1..5).to_a %>
-  </div>
+    <div class="field mt-2">
+      <%= form.label :content, 'Votre commentaire' %>
+      <%= form.text_area :content, class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2 text-slate-900" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :content, 'Commentaire' %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Ajouter une critique' %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= form.submit 'Ajouter', class:"bg-sky-400 px-4 py-2 min-w-[125px] rounded hover:cursor-pointer hover:bg-sky-300"  %>
+    </div>
+  <% end %>
+</div>

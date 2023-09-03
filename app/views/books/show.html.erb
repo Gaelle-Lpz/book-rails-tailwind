@@ -6,8 +6,25 @@
       </div>
 
       <div class="basis-1/2">
-        <h1 class="text-xl text-sky-400 font-semibold"><%= @book.title %></h1>
-        <h2 class="font-semibold">De : <%= @book.author %></h2>
+        <div class="flex justify-between">
+          <div>
+            <h1 class="text-xl text-sky-400 font-semibold"><%= @book.title %></h1>
+            <h2 class="font-semibold">De : <%= @book.author %></h2>
+          </div>
+          <div>
+            <p>
+              <% 5.times do |i| %>
+                <% if i < @book.average_rating.floor %>
+                  <%= render "shared/star"%>
+                <% else %>
+                  <%= render "shared/star_empty"%>
+                <% end %>
+              <% end %>
+            </p>
+            <p class="text-end font-semibold text-sm">(<%= @book.reviews.length%> notes)</p>
+          </div>
+
+        </div>
         <div class="border-2 border-sky-400 p-12 mt-6 bg-slate-100 dark:bg-slate-800 dark:border-sky-500 rounded">
           <p class="text-right font-semibold text-sm mb-8"><%= @book.score %> pts</p>
           <p class="text-slate-800 dark:text-slate-200 text-justify"><%= @book.description %></p>
@@ -20,14 +37,13 @@
       </div>
   </div>
 
-  <div>
-    <%= render 'reviews/form' %>
+  <!-- todo Masquer le formulaire des reviews si l'utilisateur n'a pas le livre au moins sa liste en cours -->
+  <%= render 'reviews/form' %>
+  <div class="mt-6">
     <% @book.reviews.each do |review| %>
-      <p>Note : <%= review.user.user_name%></p>
-      <p>Note : <%= review.rating %></p>
-      <p>Commentaire : <%= review.content %></p>
+      <div class="mb-3 p-6 border-sky-500 bg-slate-50 dark:bg-slate-700">
+        <p>Par <span class="font-semibold text-sky-400 dark:text-sky-500"><%= review.user.user_name%> </span>(<%= review.rating %><%= render "shared/star"%>) : <br> <span class="text-slate-800 dark:text-slate-200" ><%= review.content %></span></p>
+      </div>
     <% end %>
   </div>
-
-
 </div>

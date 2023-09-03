@@ -4,12 +4,12 @@
   <div class="max-w-xl mx-auto border p-10 rounded border-sky-500 bg-slate-50 dark:bg-slate-700">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field mt-6">
-        <%= f.label "Votre email :" %><br />
+        <%= f.label :email, "Votre email :" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2"  %>
       </div>
 
       <div class="field mt-6">
-        <%= f.label "Votre mot de passe :" %><br />
+        <%= f.label :password, "Votre mot de passe :" %><br />
         <%= f.password_field :password, autocomplete: "current-password", class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2"  %>
       </div>
 

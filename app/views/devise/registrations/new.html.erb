@@ -7,17 +7,17 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field mt-6">
-        <%= f.label "Mon pseudo * :" %><br />
+        <%= f.label :user_name, "Mon pseudo * :" %><br />
         <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre Pseudo", class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2" %>
       </div>
 
       <div class="field mt-6">
-        <%= f.label "Mon email * :"%><br />
+        <%= f.label :email, "Mon email * :"%><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2" %>
       </div>
 
       <div class="field mt-6">
-        <%= f.label "Mot de passe * :" %>
+        <%= f.label :password, "Mot de passe * :" %>
         <% if @minimum_password_length %>
         <em class="text-slate-500 dark:text-slate-300">(au minimum <%= @minimum_password_length %> caractères dont un chiffre, une lettre majuscule et un caractère spécial.)</em>
         <% end %><br />
@@ -25,7 +25,7 @@
       </div>
 
       <div class="field mt-6">
-        <%= f.label "confirmer le mot de passe * :" %><br />
+        <%= f.label :password_confirmation, "confirmer le mot de passe * :" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"rounded w-full p-1 mt-2 focus:outline-none focus:ring-0 focus:border-sky-500 border-2" %>
       </div>
 
