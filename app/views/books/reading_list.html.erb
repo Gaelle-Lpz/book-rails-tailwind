@@ -1,10 +1,22 @@
-<h2>Ma liste de lecture</h2>
-  <% @reading_list.each do |book| %>
-    <ul>
-      <li>
+<div class="container mx-auto mt-8 mb-20">
+
+<!-- La recherche ne retourne aucun résultat  :-->
+  <% if @reading_list.length == 0 %>
+    <p class="mx-auto text-center">Vous n'avez aucun livre en cours de lecture dans votre liste ...</p>
+
+<!-- Affichage des résultats :-->
+  <% else %>
+    <h1 class="mb-8 text-lg">Liste de tous les livres que vous êtes en train de lire :</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 justify-center text-center">
+    <% @reading_list.each do |book| %>
+      <div>
         <%= link_to book_path(book) do %>
+          <img src="<%= book.cover_img_url %>", class="mx-auto w-64 h-80 hover:animate-pulse rounded-r-lg dark:border-slate-200 border">
           <%= book.title %>
         <% end %>
-      </li>
-    </ul>
+      </div>
+    <% end %>
+    </div>
   <% end %>
+
+</div>
