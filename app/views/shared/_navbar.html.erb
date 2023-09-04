@@ -1,10 +1,10 @@
-<nav class="text-slate-900 dark:text-white flex justify-between items-center pt-6 pb-6 pr-12 pl-12">
+<nav class="text-slate-900 dark:text-white flex justify-around items-center pt-6 pb-6 pr-12 pl-12">
   <div>LOGO</div>
 
   <!-- Barre de navigation quand l'utilisateur est connecté -->
   <% if user_signed_in? %>
 
-    <div class="search">
+    <div class="search shrink w-2/4">
       <%= form_with url: search_books_path, remote: true, method: :get do %>
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"      stroke="currentColor" class="w-6 h-6 absolute m-2">
@@ -13,7 +13,7 @@
 
         <%= text_field_tag :query,
           params[:query],
-          class: "w-96 rounded focus:outline-none focus:ring-0 focus:border-sky-500 border-2 focus:animate-pulse dark:text-slate-900",
+          class: "w-full rounded focus:outline-none focus:ring-0 focus:border-sky-500 border-2 focus:animate-pulse dark:text-slate-900",
           placeholder: "       Rechercher un livre, un auteur ...",
           name: "query"
         %>
@@ -21,9 +21,21 @@
     </div>
 
     <div class="flex items-center">
-      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="/dashboard">Mon Tableau de bord</a>
-      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="#">Mes Bibliothèques</a>
-      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-4" href="#">Mon Profil</a>
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-6" href="/dashboard">Mon Tableau de bord</a>
+
+
+    <div data-controller="dropdown" class="relative group">
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-6 pb-9" href="#" data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
+        Mes Bibliothèques
+      </a>
+      <div data-dropdown-target="link" class="hidden absolute left-0 mt-2 w-48 z-10 group-hover:block border-l border-sky-500 origin-top-left transform scale-0 group-hover:scale-100 transition-transform duration-300">
+        <!-- sous-menu -->
+        <a class="block px-4 py-2 hover:text-sky-500" href="/books/wish_list">Liste de souhait</a>
+        <a class="block px-4 py-2 hover:text-sky-500 " href="/books/reading_list">Liste en cours</a>
+        <a class="block px-4 py-2 hover:text-sky-500 " href="/books/read_list">Liste lus</a>
+      </div>
+    </div>
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-8" href="#">Mon Profil</a>
       <span class="pt-1"><%= render "shared/darkmode_toggle"%></span>
     </div>
   <% else %>
