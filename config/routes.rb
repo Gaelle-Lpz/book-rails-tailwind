@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: "pages#home"
+  root to: 'pages#home'
 
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
 
   resources :books, only: %i[show] do
+    resources :user_books, only: %i[create update destroy] do
+      post :archive
+    end
     resources :reviews, only: %i[new create]
     collection do
       get :search

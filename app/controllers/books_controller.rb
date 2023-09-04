@@ -4,6 +4,7 @@ class BooksController < ApplicationController
 
   def show
     @reviews = @book.reviews
+    @user_book = UserBook.find_by(user: current_user, book_id: @book.id)
   end
 
   def wish_list
