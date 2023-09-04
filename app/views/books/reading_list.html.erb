@@ -1,0 +1,10 @@
+<h2>Ma liste de lecture</h2>
+  <% @reading_list_books.each do |book| %>
+    <ul>
+      <li>
+        <%= link_to book_path(book) do %>
+          <%= book.title %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>

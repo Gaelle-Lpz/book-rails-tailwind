@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
     collection do
       get :search
-      get :library
+      get :reading_list
+      get :wish_list
+      get :read_book_list
     end
   end
 end

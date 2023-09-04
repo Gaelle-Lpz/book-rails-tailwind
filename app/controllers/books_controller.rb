@@ -1,15 +1,21 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show]
+  before_action :set_user_book, only: %i[wish_list reading_list read_list]
 
   def show
     @reviews = @book.reviews
   end
 
-  def library
-    user_books = current_user.user_books
-    @wish_list_books = books_from_status(user_books, 0)
-    @reading_list_books = books_from_status(user_books, 1)
-    @read_list_books = books_from_status(user_books, 2)
+  def wish_list
+    @wish_list = books_from_status(@user_books, 0)
+  end
+
+  def reading_list
+    @reading_list = books_from_status(@user_books, 1)
+  end
+
+  def read_list
+    @read_list = books_from_status(@user_books, 2)
   end
 
   def search
@@ -23,6 +29,10 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def set_user_book
+    @user_books = current_user.user_books
   end
 
   def book_params
