@@ -6,4 +6,13 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+
+  def profil
+  end
+
+  def friends_list
+  end
+
+  def settings
+  end
 end

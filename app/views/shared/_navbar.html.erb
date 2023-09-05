@@ -35,7 +35,18 @@
         <a class="block px-4 py-2 hover:text-sky-500 " href="/books/read_list">Liste lus</a>
       </div>
     </div>
-      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-8" href="#">Mon Profil</a>
+    <div data-controller="dropdown" class="relative group">
+      <a class="hover:text-sky-600 dark:hover:text-sky-500 mr-6 pb-9" href="#" data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
+        Mon Profil
+      </a>
+      <div data-dropdown-target="link" class="hidden absolute left-0 mt-2 w-48 z-10 group-hover:block border-l border-sky-500 origin-top-left transform scale-0 group-hover:scale-100 transition-transform duration-300">
+        <!-- sous-menu -->
+        <a class="block px-4 py-2 hover:text-sky-500" href="/profil">Mon Profil</a>
+        <a class="block px-4 py-2 hover:text-sky-500" href="/friends_list">Mes Amis</a>
+        <a class="block px-4 py-2 hover:text-sky-500" href="/settings">Paramètres</a>
+        <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class:"block px-4 py-2 hover:text-sky-500" %>
+      </div>
+    </div>
       <span class="pt-1"><%= render "shared/darkmode_toggle"%></span>
     </div>
   <% else %>

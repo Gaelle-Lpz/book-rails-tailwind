@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
+  get 'profil', to: 'pages#profil', as: 'profil'
+  get 'friends_list', to: 'pages#profil', as: 'friends'
+  get 'settings', to: 'pages#settings', as: 'settings'
 
   resources :books, only: %i[show] do
     resources :user_books, only: %i[create update destroy] do
