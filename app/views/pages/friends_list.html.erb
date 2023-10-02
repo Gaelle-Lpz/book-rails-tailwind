@@ -1,0 +1,18 @@
+<h2>Demande en attente : </h2>
+<ul>
+  <% @friendship_pending.each do |friendship| %>
+    <li>
+      <%= friendship.user.user_name  %>
+      <%= link_to "Accepter", friendship_path(friendship), data: {turbo_method: :patch}%> |
+      <%= link_to "Rejeter", reject_friendship_path(friendship), data: {turbo_method: :patch}%>
+    </li>
+  <% end %>
+</ul>
+
+
+<h2>Mes Amis :</h2>
+<ul>
+  <% @friends.each do |friend| %>
+    <li><%= friend.user_name %></li>
+  <% end %>
+</ul>

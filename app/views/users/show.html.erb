@@ -1,0 +1,5 @@
+<h2><%= @user.user_name %></h2>
+
+<% unless @user == current_user  && current_user.friendship_status_with(@user) %>
+<%= button_to "Envoyer une demande d'ami", user_friendships_path(@user), method: :post, class: "mt-10 bg-sky-400 px-6 py-3 min-w-[160px] rounded-lg hover:cursor-pointer hover:bg-sky-300 inline-block text-center" %>
+<% end %>

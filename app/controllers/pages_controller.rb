@@ -11,6 +11,8 @@ class PagesController < ApplicationController
   end
 
   def friends_list
+    @friendship_pending = Friendship.where(friend: current_user, status: 0)
+    @friends = current_user.friends
   end
 
   def settings
